@@ -1,0 +1,27 @@
+<div class="row justify-content-center">
+  <div class="col-6">
+    <div class="card">
+      <img class="card-img-top" alt="" src="">
+      <%= image_tag "wow.png", alt: "Mon image", height: 350 %>
+      <div class="card-body">
+        <h5 class="card-title"><%=@gossip.title %></h5>
+        <p class="card-text"><%= @gossip.content %></p>
+        <p class="card-text">
+        <p class="card-text">
+          <small class="text-muted">
+            posté par <a href="<%= user_path(@gossip.user.id) %>"><%=@gossip.user.first_name %></a>
+            le <%=@gossip.created_at.strftime("%d/%m/%Y à %H:%I") %>
+          </small>
+        </p>
+          <div class="row">
+            <div class="col">
+            <a href="<%= edit_gossip_path(@gossip.id)%>" class="btn btn-info">Editer</a>
+          </div>
+              <div class="col">
+            <a href="<%= gossip_path(@gossip.id)%>" class="btn btn-danger" data-confirm="êtes vous sûr ? (irréversible)" data-method="DELETE">Supprimer</a>
+              </div>
+            
+      </div>
+    </div>
+  </div>
+</div>
