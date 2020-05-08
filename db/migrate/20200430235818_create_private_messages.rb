@@ -4,7 +4,7 @@ class CreatePrivateMessages < ActiveRecord::Migration[5.2]
       t.text :content
       t.references :recipient, index: true
       t.references :sender, index: true
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end
