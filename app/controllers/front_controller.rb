@@ -1,4 +1,5 @@
 class FrontController < ApplicationController
+  include ApplicationHelper
   # View Team page
   def team
   end

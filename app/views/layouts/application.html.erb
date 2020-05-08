@@ -40,12 +40,47 @@
       </li>
     </ul>
   </div>
+   <% if !User.find_by(id: session[:user_id]) %>
+      <!-- If no connected user : Btn Connection-->
+      <a class="btn btn-primary btn-sm" href="<%=new_session_path %>"><i class="fas fa-sign-in-alt"></i> Se connecter</a>
+    <% else %>
+      <!-- If connected user : -->
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown dropleft">
+          <!-- User avatar -->
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40" height="40" class="rounded-circle" alt="">
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <!-- Show User fullname-->
+            <p class="text-center text-secondary"><i class="fas fa-user"></i> <%= current_user.full_name %></p>
+            <hr />
+            <!-- Link Add gossip -->
+            <a class="dropdown-item text-success" href="<%=new_gossip_path %>">
+              <i class="fas fa-plus"></i> Nouveau potin
+            </a>
+            <hr />
+            <!-- Edit account -->
+<!--            <a class="dropdown-item text-success" href="<%#=new_gossip_path %>">-->
+<!--              <i class="fas fa-plus"></i> Nouveau potin-->
+<!--            </a>-->
+<!--            <hr />-->
+            <!-- Btn Sign out-->
+            <a class="dropdown-item text-danger" href="<%= session_path(session.id) %>" data-method="delete" data-confirm="Are you sure ?">
+              <i class="fas fa-power-off"></i> Déconnexion
+            </a>
+          </div>
+        </li>
+      </ul>
+    <% end %>
 </nav>
 
 <div class="container">
   <h1 class="display-4 text-center my-3">The Gossip Project</h1>
   <%= yield %>
 </div>
+
+
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

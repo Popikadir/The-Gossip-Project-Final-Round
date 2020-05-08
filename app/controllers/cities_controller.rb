@@ -1,4 +1,5 @@
 class CitiesController < ApplicationController
+    include ApplicationHelper
     def show
         @city = City.find(params[:id])
         @gossips = Gossip.all

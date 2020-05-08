@@ -1,4 +1,7 @@
 class GossipsController < ApplicationController
+  include ApplicationHelper
+
+  before_action :authenticate_user, except: [:index]
   # Aller chercher les Gossip
   def index
     @gossips = Gossip.all.order("created_at DESC")
@@ -7,6 +10,8 @@ class GossipsController < ApplicationController
   # Montrer aller chercher un Gossip
   def show
     @gossip = Gossip.find(params[:id])
+    @comments = Comment.all.where(gossip_id: params[:id]).order("created_at DESC")
+    @comment =   Comment.new(gossip: @gossip, user: User.find(@gossip.user.id), content: "")
   end
 
   # Vue sur création

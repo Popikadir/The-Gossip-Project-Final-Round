@@ -1,9 +1,13 @@
 class User < ApplicationRecord
+  has_secure_password
+
+  validates :password_confirmation, presence: true
+
   belongs_to :city
   has_many :gossips
-  has_many :sent_messages, foreign_key: 'sender_id', class_name: "PrivateMessage"
-  has_many :received_messages, foreign_key: 'recipient_id', class_name: "PrivateMessage"
-
+  has_many :comments
+  has_many :gossips_likes
+  has_many :comments_likes
 
   validates :first_name,
             presence: true,
@@ -17,7 +21,7 @@ class User < ApplicationRecord
             length: {in: 5..100},
             format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: "Wrong email format" }
 
-
+  # Returns user's full_name
   def full_name
     "#{first_name} #{last_name}"
   end
