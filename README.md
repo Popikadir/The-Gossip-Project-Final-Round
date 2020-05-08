@@ -1,25 +1,34 @@
-# README
+The Gossip Project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+L'appli pour balancer vos pires ragots aux yeux de tous et vous faire des amis...ou pas.
 
-Things you may want to cover:
+Image of site
+wrench Installation
+Configuration
 
-* Ruby version
+Entrez les commandes suivantes dans votre terminal préféré :
 
-* System dependencies
+git clone git@github.com:luca-montaigut/TGP_rails.git
 
-* Configuration
+cd TGP_rails
 
-* Database creation
+bundle install
+Database creation
 
-* Database initialization
+rails db:create
 
-* How to run the test suite
+rails db:migrate
+Database initialisation
 
-* Services (job queues, cache servers, search engines, etc.)
+rails db:seed
+fire Connexion au site
 
-* Deployment instructions
+rails server
 
-* ...
-# The-Gossip-Project-Final-Round
+Une fois le server connecté, rendez-vous sur :
+
+http://localhost:3000/
+
+Créer ensuite votre compte ou connectez-vous avec : login : admin@admin.com mdp: admin
+
+Bonne visite !
